@@ -1,5 +1,10 @@
 # sample-expo-next
 
+```shell script
+$ yarn install
+$ yarn next dev
+```
+
 ## How to create this repo
 
 ### Setup
