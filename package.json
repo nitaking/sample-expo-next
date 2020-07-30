@@ -9,7 +9,12 @@
   },
   "devDependencies": {
     "@babel/core": "7.9.0",
-    "@expo/next-adapter": "2.1.0"
+    "@expo/next-adapter": "2.1.0",
+    "@types/next": "^9.0.0",
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-native": "^0.63.2",
+    "typescript": "^3.9.7"
   },
   "scripts": {
     "start": "expo start",
