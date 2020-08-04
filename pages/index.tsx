@@ -2,8 +2,20 @@
 import React from 'react';
 import {useMediaQuery} from "react-responsive";
 import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Link} from "expo-next-react-navigation";
+import { createAppContainer } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
+import Nita from "./nita";
 
-function Header({style, ...props} = {}) {
+
+const AppNavigator = createStackNavigator({
+    '/': App,
+    nita: Nita,
+})
+
+export default createAppContainer(AppNavigator)
+
+function Header({style = null, ...props}) {
     return (
         <Text
             accessibilityLabel="header"
@@ -11,7 +23,7 @@ function Header({style, ...props} = {}) {
                 {
                     fontWeight: "bold",
                     marginBottom: 24,
-                    fontSize: Platform.select({web: "2.25rem", default: 2.25 * 16})
+                    fontSize: Platform.select({web: "2.25rem", default: `${2.25 * 16}`})
                 },
                 style
             ]}
@@ -20,7 +32,7 @@ function Header({style, ...props} = {}) {
     );
 }
 
-export default function App() {
+function App() {
     const isDesktopOrLaptop = useMediaQuery({
         query: "(min-device-width: 1224px)"
     });
@@ -36,20 +48,26 @@ export default function App() {
         <View style={styles.container}>
             <Header>Device Test!</Header>
 
-
             <Text style={styles.text}>Welcome to Expo + Next.js 👋</Text>
-            {isDesktopOrLaptop && (
-                <>
-                    <Text>You are a desktop or laptop</Text>
-                    {isBigScreen && <Text>You also have a huge screen</Text>}
-                    {isTabletOrMobile && <Text>You are sized like a tablet or mobile phone though</Text>}
-                </>
-            )}
-            {isTabletOrMobileDevice && <Text>You are a tablet or mobile phone</Text>}
-            <Text>
-                Your are in {isPortrait ? "portrait" : "landscape"} orientation
-            </Text>
-            {isRetina && <Text>You are retina</Text>}
+
+            <View style={{ margin: 40 }}>
+                <Link style={{ backgroundColor: 'yellow' }} routeName="nita">
+                    <Text style={{ marginVertical: 20 }}>Button</Text>
+                </Link>
+                {isDesktopOrLaptop && (
+                    <Link style={{ backgroundColor: 'pink' }} routeName="nita">
+                        <Text style={{ marginVertical: 20 }}>DESKTOP!! or LAPTOP!!</Text>
+                        {isBigScreen && <Text style={{ marginVertical: 20 }}>BIG screen!!!</Text>}
+                        {isTabletOrMobile && <Text style={{ marginVertical: 20 }}>TABLET!! or MOBILE!!</Text>}
+                    </Link>
+                )}
+                {isTabletOrMobileDevice && <Text>You are a tablet or mobile phone</Text>}
+                <Text style={{ marginVertical: 20 }}>
+                    Your are in {isPortrait ? "portrait" : "landscape"} orientation
+                </Text>
+                {isRetina && <Text>You are retina</Text>}
+            </View>
+
         </View>
     );
 }
@@ -64,3 +82,12 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
 });
+
+
+function Route() {
+    return (
+        <NavigationContainer>
+            <PageNavigator />
+        </NavigationContainer>
+    );
+}

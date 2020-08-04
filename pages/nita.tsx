@@ -1,11 +1,30 @@
 // @generated: @expo/next-adapter@2.1.0
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {useRouting} from "expo-next-react-navigation";
+
+function Button({ text, onPress }: { text: string; onPress?: () => void }) {
+    return (
+        <Text
+            style={{
+                paddingHorizontal: 20,
+                paddingVertical: 10,
+                backgroundColor: 'black',
+                color: 'white',
+                margin: 20,
+            }}
+            onPress={onPress}
+        >
+            {text}
+        </Text>
+    )
+}
 
 export default function Nita() {
 
     const [res, setRes] = useState('');
     const [res2, setRes2] = useState('');
+    const { goBack } = useRouting()
 
     useEffect(() => {
 
@@ -31,6 +50,8 @@ export default function Nita() {
             <Text style={styles.text}>{res}</Text>
             <Text style={styles.text}>{' '}</Text>
             <Text style={styles.text}>{res2}</Text>
+
+            <Button text="go back" onPress={() => goBack()} />
         </View>
     );
 
