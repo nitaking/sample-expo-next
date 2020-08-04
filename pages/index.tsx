@@ -21,9 +21,7 @@ function Header({style, ...props} = {}) {
 }
 
 export default function App() {
-    const isDesktopOrLaptop = useMediaQuery({
-        query: "(min-device-width: 1224px)"
-    });
+    const isDesktopOrLaptop = useMediaQuery({ query: "(min-device-width: 1224px)" });
     const isBigScreen = useMediaQuery({query: "(min-device-width: 1824px)"});
     const isTabletOrMobile = useMediaQuery({query: "(max-width: 1224px)"});
     const isTabletOrMobileDevice = useMediaQuery({
@@ -38,18 +36,10 @@ export default function App() {
 
 
             <Text style={styles.text}>Welcome to Expo + Next.js 👋</Text>
-            {isDesktopOrLaptop && (
-                <>
-                    <Text>You are a desktop or laptop</Text>
-                    {isBigScreen && <Text>You also have a huge screen</Text>}
-                    {isTabletOrMobile && <Text>You are sized like a tablet or mobile phone though</Text>}
-                </>
-            )}
-            {isTabletOrMobileDevice && <Text>You are a tablet or mobile phone</Text>}
-            <Text>
-                Your are in {isPortrait ? "portrait" : "landscape"} orientation
-            </Text>
-            {isRetina && <Text>You are retina</Text>}
+
+            {isDesktopOrLaptop 	&& <Text>IS DESKTOP!!!</Text>}
+            {isTabletOrMobile 	&& <Text>IS MOBILE OR TABLET!!!</Text>}
+            {isBigScreen 		&& <Text>IS BIG!!!</Text>}
         </View>
     );
 }
@@ -62,5 +52,6 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 16,
+        marginBottom: 10,
     },
 });
