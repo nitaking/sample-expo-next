@@ -3,7 +3,7 @@
     "@expo/match-media": "^0.0.0-beta.2",
     "@types/react-responsive": "^8.0.2",
     "expo": "~38.0.0",
-    "next": "11.1.0",
+    "next": "11.1.1",
     "react": "~16.11.0",
     "react-dom": "~16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
